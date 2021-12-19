@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Random;
 
 public class StartController {
-
     Stage primaryStage;
     Player player;
     int PORT;
@@ -50,6 +49,7 @@ public class StartController {
 
     public void joinToGameBtnTapped() throws Exception {
         PORT = Integer.parseInt(portInput.getText());
+        IP = "127.0.0.1";
         Connection connection = new Connection(PORT, player);
         if (connection.connectToServer()){
             SceneLoader.showWaitingController(primaryStage, PORT);

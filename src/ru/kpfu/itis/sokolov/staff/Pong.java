@@ -16,7 +16,6 @@ import javafx.util.Duration;
 import java.util.Random;
 
 public class Pong extends Application {
-
     private static final int width = 800;
     private static final int height = 600;
     private static final int PLAYER_HEIGHT = 100;
@@ -39,8 +38,8 @@ public class Pong extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
-        canvas.setOnMouseMoved(e -> playerOneYPos = e.getY());
-        canvas.setOnMouseClicked(e -> gameStarted = true);
+        canvas.setOnMouseMoved(e ->  playerOneYPos  = e.getY());
+        canvas.setOnMouseClicked(e ->  gameStarted = true);
         stage.setScene(new Scene(new StackPane(canvas)));
         stage.show();
         tl.play();
@@ -51,13 +50,13 @@ public class Pong extends Application {
         gc.fillRect(0, 0, width, height);
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font(25));
-        if (gameStarted) {
-            ballXPos += ballXSpeed;
-            ballYPos += ballYSpeed;
-            if (ballXPos < width - width / 4) {
+        if(gameStarted) {
+            ballXPos+=ballXSpeed;
+            ballYPos+=ballYSpeed;
+            if(ballXPos < width - width  / 4) {
                 playerTwoYPos = ballYPos - PLAYER_HEIGHT / 2;
-            } else {
-                playerTwoYPos = ballYPos > playerTwoYPos + PLAYER_HEIGHT / 2 ? playerTwoYPos += 1 : playerTwoYPos - 1;
+            }  else {
+                playerTwoYPos =  ballYPos > playerTwoYPos + PLAYER_HEIGHT / 2 ? playerTwoYPos += 1: playerTwoYPos - 1;
             }
             gc.fillOval(ballXPos, ballYPos, BALL_R, BALL_R);
         } else {
@@ -66,23 +65,23 @@ public class Pong extends Application {
             gc.strokeText("Click to Start", width / 2, height / 2);
             ballXPos = width / 2;
             ballYPos = height / 2;
-            ballXSpeed = new Random().nextInt(2) == 0 ? 1 : -1;
-            ballYSpeed = new Random().nextInt(2) == 0 ? 1 : -1;
+            ballXSpeed = new Random().nextInt(2) == 0 ? 1: -1;
+            ballYSpeed = new Random().nextInt(2) == 0 ? 1: -1;
         }
 
-        if (ballYPos > height || ballYPos < 0) ballYSpeed *= -1;
+        if(ballYPos > height || ballYPos < 0) ballYSpeed *= -1;
 
-        if (ballXPos < playerOneXPos - PLAYER_WIDTH) {
+        if(ballXPos < playerOneXPos - PLAYER_WIDTH) {
             scoreP2++;
             gameStarted = false;
         }
 
-        if (ballXPos > playerTwoXPos + PLAYER_WIDTH) {
+        if(ballXPos > playerTwoXPos + PLAYER_WIDTH) {
             scoreP1++;
             gameStarted = false;
         }
 
-        if (((ballXPos + BALL_R > playerTwoXPos) && ballYPos >= playerTwoYPos && ballYPos <= playerTwoYPos + PLAYER_HEIGHT) ||
+        if( ((ballXPos + BALL_R > playerTwoXPos) && ballYPos >= playerTwoYPos && ballYPos <= playerTwoYPos + PLAYER_HEIGHT) ||
                 ((ballXPos < playerOneXPos + PLAYER_WIDTH) && ballYPos >= playerOneYPos && ballYPos <= playerOneYPos + PLAYER_HEIGHT)) {
             ballYSpeed += 1 * Math.signum(ballYSpeed);
             ballXSpeed += 1 * Math.signum(ballXSpeed);
