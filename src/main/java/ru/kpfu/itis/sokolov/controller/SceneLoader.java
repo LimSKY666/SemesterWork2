@@ -11,7 +11,7 @@ import java.io.IOException;
 public class SceneLoader {
 
     public static void showWaitingController(Stage primaryStage, int PORT) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("../view/waiting.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("/view/waiting.fxml"));
         Parent root = loader.load();
 
         WaitingController waitingController = (WaitingController) loader.getController();
@@ -24,7 +24,7 @@ public class SceneLoader {
     }
 
     public static void showGameController(Stage primaryStage, Player player) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("../view/game.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("/view/game.fxml"));
         Parent root = loader.load();
 
         GameController gameController = (GameController) loader.getController();
@@ -37,7 +37,7 @@ public class SceneLoader {
     }
 
     public static void showStartController(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("../view/start.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("/view/start.fxml"));
         Parent root = loader.load();
 
         StartController startController = (StartController) loader.getController();
@@ -50,7 +50,7 @@ public class SceneLoader {
     }
 
     public static void showTrainingController(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("../view/training.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource("/view/training.fxml"));
         Parent root = loader.load();
 
         TrainingController trainingController = (TrainingController) loader.getController();
