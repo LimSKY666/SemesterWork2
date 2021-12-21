@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/start.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/start.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("ATARI PONG");
         Scene scene = new Scene(root, 800, 600);
